@@ -1,25 +1,40 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [value, setValue] = useState(new Set([]));
+    const ans = [];
+
+    for (let i = 2; i <= 50; i++) {
+        if (i % 2 != 0) {
+            ans.push(i);
+        }
+    }
+
+    const handleChange = (e) => {
+        let val = e.target.value;
+
+        setValue([...value, val]);
+    };
+    console.log(value);
+
+    return (
+        <div className="App">
+            <div class="dropdown">
+                <select
+                    onChange={handleChange}
+                    class="form-select"
+                    aria-label="Default select example"
+                >
+                    <option value="0">0</option>
+                    {ans.map((value, index) => {
+                        return <option value={value}>{value}</option>;
+                    })}
+                </select>
+            </div>
+        </div>
+    );
 }
 
 export default App;
