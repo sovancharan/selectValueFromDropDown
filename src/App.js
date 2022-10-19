@@ -6,9 +6,16 @@ function App() {
     const [value, setValue] = useState(new Set([]));
     const ans = [];
 
-    for (let i = 2; i <= 50; i++) {
-        if (i % 2 != 0) {
-            ans.push(i);
+    for (var counter = 0; counter <= 50; counter++) {
+        var notPrime = false;
+        for (var i = 2; i <= counter; i++) {
+            if (counter % i === 0 && i !== counter) {
+                notPrime = true;
+            }
+        }
+        if (notPrime === false) {
+            //          console.log(counter);
+            ans.push(counter);
         }
     }
 
